@@ -4,5 +4,5 @@ This app will essentially take quotes from users where the users can type the qu
 
 ![alt text](screenshots/Screen Shot 2016-05-29 at 3.37.10 PM.png "Main view of quote")
 
-![alt text](screenshots/Screen Shot 2016-05-29 at 6.53.42 PM "email messaging when quote is created")
+![alt text](screenshots/Screen Shot 2016-05-29 at 6.53.42 PM.png "email messaging when quote is created")
 
