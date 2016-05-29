@@ -18,9 +18,29 @@ This route applies the 'web' middleware group to every route
 it contains. The "web" middleware group is defined in your HTTP
 kernel and include sthe session state, CSRF protection and more.
 */
+/*
 Route::group(['middleware' => ['web']],function() {
-    Route::get('/', function() {
-        return view('index');
-    });
-
+*/
+    Route::get('/{author?}', [
+        
+        'uses' => 'QuoteController@getIndex',
+        'as'  => 'index'
+        
+        
+        ]);
+      
+    
+    Route::post('/new', [
+       'uses' => 'QuoteController@postQuote',
+       'as'   => 'create'
+    ]);
+    
+    Route::get('/delete/{quote_id}', [
+        'uses' => 'QuoteController@deleteQuote',
+        'as'   => 'delete'
+        
+        ]);
+        
+/*
 });
+*/
