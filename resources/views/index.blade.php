@@ -53,6 +53,10 @@ href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.cs
                 <label for="author">Your Name</label>
                 <input type="text" name="author" id = "author" placeholder = "Your Name"/>
             </div>
+             <div class = "input-group">
+                <label for="email">Your E-Mail</label>
+                <input type="text" name="email" id = "email" placeholder = "Your E-Mail"/>
+            </div>
             <div class = "input-group">
                 <label for="author">Your Quote</label>
                 <textarea name = "quote" id = "quote" rows = "5" placeholder = "Quote"></textarea>

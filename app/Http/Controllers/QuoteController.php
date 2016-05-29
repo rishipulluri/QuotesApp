@@ -4,29 +4,35 @@ namespace App\Http\Controllers;
 use App\Quote;
 use App\Author;
 use Illuminate\Http\Request;
+use App\Events\QuoteCreated;
+use Illuminate\Support\Facades\Event;
 
 class QuoteController extends Controller
 {
     public function postQuote(Request $request) {
         $this -> validate($request,[
             'author' => 'required|max:60|alpha',
-            'quote' => 'required|max:500'
+            'quote' => 'required|max:500',
+            'email' => 'required|email'
             ]);
             
         
         $authorText = ucfirst($request['author']);
         $quoteText = $request['quote'];
+        $authorEmail = $request['email'];
         
         $author = Author::where('name', $authorText)->first();
         if (!$author) {
             $author = new Author();
             $author->name = $authorText;
+            $author->email = $authorEmail;
             $author->save();
         }
         $quote = new Quote();
         $quote->quote = $quoteText;
         $author->quotes()->save($quote);
         
+        Event::fire(new QuoteCreated($author));
         return redirect()->route('index')->with([
             'success' => 'Quote saved!'
             ]);
