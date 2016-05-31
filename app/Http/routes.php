@@ -56,10 +56,26 @@ Route::group(['middleware' => ['web']],function() {
         'as'  => 'admin.login'
         ]);
         
-     Route::get('/admin/dashboard', [
+
+        
+    Route::get('/admin/logout',[
+        'uses' => 'AdminController@getLogout',
+        'as' => 'admin.logout'
+        ]);
+    
+    Route::group(['middleware'=> 'auth'], function(){
+        
+    Route::get('/admin/quotes', function(){
+        return view('admin.quotes');
+        });
+    
+    Route::get('/admin/dashboard', [
         'uses' => 'AdminController@getDashboard',
         'as'  => 'admin.dashboard'
         ]);
+    
+    });
+ 
         
         
 /*

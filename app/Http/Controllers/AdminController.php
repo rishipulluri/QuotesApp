@@ -31,4 +31,10 @@ class AdminController extends Controller
         $authors = Author::all();
         return view ('admin.dashboard', ['authors' => $authors]);
     }
+    
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect()->route('index');
+    }
 }
