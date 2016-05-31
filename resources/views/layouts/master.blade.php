@@ -9,7 +9,7 @@
         @yield('styles')
     </head>
     <body>
-       {{-- @include('includes.header') --}}
+        @include('includes.header') 
         <div class = "main">
             @yield('content') 
             {{-- the yield basically specifies that any class that extends this one and has 

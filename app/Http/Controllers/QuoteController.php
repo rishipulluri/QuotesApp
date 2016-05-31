@@ -6,6 +6,7 @@ use App\Author;
 use Illuminate\Http\Request;
 use App\Events\QuoteCreated;
 use Illuminate\Support\Facades\Event;
+use App\AuthorLog;
 
 class QuoteController extends Controller
 {
@@ -71,5 +72,13 @@ class QuoteController extends Controller
             'success' => $msg
             ]);
         
+    }
+    
+    public function getMailCallback($author_name)
+    {
+        $author_log = new AuthorLog;
+        $author_log->name = $author_name;
+        $author_log->save();
+        return view('email.callback', ['author' => $author_name]);  
     }
 }
